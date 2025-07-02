@@ -6,7 +6,7 @@ A lightweight prototype that mimics the core behavior of the Vyvx Media Portal (
 
 ### Backend - FastAPI, Python, pyodbc
 
-### Database - Sybase ASE via SAP ASE ODBC 64-bit Driver ("sybdrvodb64.dll")
+### Database - Sybase ASE via SAP ASE ODBC 64-bit Driver ("sybdrvodb64.dll")  
   
 P.S.: You will need to create a .env file in the "backend" folder for this to work. It must include the following fields: 
 
