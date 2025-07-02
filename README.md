@@ -1,7 +1,7 @@
 # Mini Media Portal
 
-A lightweight prototype that mimics the core behavior of the Vyvx Media Portal.  
-Designed as a Proof of Concept for Vyvx's future migration to a modern technology stack.
+A lightweight prototype that mimics the core behavior of the Vyvx Media Portal (displaying tables with info from the database).  
+Designed as a PoC for Vyvx's future migration to a modern stack.
 
 ### Frontend
 - React
