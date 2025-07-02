@@ -15,7 +15,7 @@ Designed as a Proof of Concept for Vyvx's future migration to a modern technolog
 
 ### Database
 - Sybase ASE
-- SAP ASE ODBC 64-bit Driver ('sybdrvodb64.dll')
+- SAP ASE ODBC 64-bit Driver ("sybdrvodb64.dll")
 
 P.S.: You will need to create a .env file in the "backend" folder for this to work. It must include the following fields: 
 
