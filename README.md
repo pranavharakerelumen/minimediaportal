@@ -1,6 +1,18 @@
-#Mini Media Portal 
-##A lightweight prototype that mimicks the core behavior of Vyvx Media Portal.
-##A PoC application for when Vyvx transitions to a modern stack. 
-- **Frontend**: React, Javascript, Bootstrap
-- **Backend**: FastAPI, Python, pyodbc
-- **Database**: Sybase ASE (via SAP ASE ODBC 64-bit Driver - SYBDRVODB64.dll)
+# Mini Media Portal
+
+A lightweight prototype that mimics the core behavior of the Vyvx Media Portal.  
+Designed as a Proof of Concept for Vyvx's future migration to a modern technology stack.
+
+### Frontend
+- React
+- JavaScript
+- Bootstrap
+
+### Backend
+- FastAPI
+- Python
+- pyodbc
+
+### Database
+- Sybase ASE
+- SAP ASE ODBC 64-bit Driver (`sybdrvodb64.dll`)
