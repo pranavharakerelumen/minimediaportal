@@ -2,17 +2,29 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Reservations from "./Reservations";
 
 function App() {
   return (
-    <div className="container mt-5">
-      <h1 className="text-primary">Mini Media Portal</h1>
-      <button className="btn btn-success">Click me</button>
-    </div>
+    <main className="min-h-screen bg-gray-50 text-gray-900">
+      <Reservations />
+    </main>
   );
 }
 
 export default App;
+
+
+// function App() {
+//   return (
+//     <div className="container mt-5">
+//       <h1 className="text-primary">Mini Media Portal</h1>
+//       <button className="btn btn-success">Click me</button>
+//     </div>
+//   );
+// }
+
+// export default App;
 
 // function App() {
 //   const [count, setCount] = useState(0)

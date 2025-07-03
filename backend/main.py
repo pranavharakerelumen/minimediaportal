@@ -1,6 +1,7 @@
 import os
 import pyodbc
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -9,7 +10,15 @@ SYBASE_SERVER = os.getenv("SYBASE_SERVER")
 SYBASE_DATABASE = os.getenv("SYBASE_DATABASE")
 SYBASE_USERNAME = os.getenv("SYBASE_USERNAME")
 SYBASE_PASSWORD = os.getenv("SYBASE_PASSWORD")
+
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # frontend dev server
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def get_db_connection():
     conn_str = (
@@ -33,7 +42,7 @@ def get_active_services():
     except Exception as e:
         return {"error": str(e)}
 
-# If you want to test Postman with a random DB response, try this:
+# If you want to test Postman with a basic response, try this:
 # from fastapi import FastAPI
 
 # app = FastAPI()
