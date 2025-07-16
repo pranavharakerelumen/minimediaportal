@@ -1,6 +1,6 @@
 import os
 import pyodbc
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
@@ -31,16 +31,42 @@ def get_db_connection():
     return pyodbc.connect(conn_str)
 
 @app.get("/customer/service/_active/status")
-def get_active_services():
+def get_active_services(customer_abbr: str = Query(default="VYVX")):
     try:
-        conn = get_db_connection()
-        cursor = conn.cursor()
-        cursor.execute("SELECT TOP 10 * FROM reservation WHERE status_code = 'INS'")
-        columns = [column[0] for column in cursor.description]
-        results = [dict(zip(columns, row)) for row in cursor.fetchall()]
-        return results
+        with get_db_connection() as conn:
+            cursor = conn.cursor()
+            # query = """
+            #     SELECT TOP 10 * FROM reservation
+            #     WHERE status_code = 'INS' AND customer_abbr = ?
+            # """
+            query = """
+                SELECT * FROM reservation
+                WHERE
+                    status_code = 'INS' AND
+                    customer_abbr = ? AND
+                    start_date <= DATEADD(day, 30, GETDATE()) AND
+                    end_date >= GETDATE()
+            """
+            cursor.execute(query, [customer_abbr])
+            columns = [column[0] for column in cursor.description]
+            results = [dict(zip(columns, row)) for row in cursor.fetchall()]
+            return results
     except Exception as e:
         return {"error": str(e)}
+
+# @app.get("/customer/service/_active/status")
+# def get_active_services():
+#     try:
+#         conn = get_db_connection()
+#         cursor = conn.cursor()
+#         #cursor.execute("SELECT TOP 10 * FROM reservation WHERE status_code = 'INS'")
+#         cursor.execute("SELECT TOP 10 * FROM reservation WHERE status_code = 'INS' AND customer_abbr IN ( 'VYVX' )")
+#         #cursor.execute("SELECT * FROM reservation")
+#         columns = [column[0] for column in cursor.description]
+#         results = [dict(zip(columns, row)) for row in cursor.fetchall()]
+#         return results
+#     except Exception as e:
+#         return {"error": str(e)}
 
 # If you want to test Postman with a basic response, try this:
 # from fastapi import FastAPI
