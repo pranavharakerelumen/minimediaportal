@@ -3,13 +3,8 @@ import React, { useEffect, useState } from "react";
 
 const customerOptions = [
   "VYVX",
-  "VYVXSPORTS", // what is the db name for all of these??
-  "VYVX HOME",
-  "VYVX SPARE",
-  "VYVX AWAY - VISITOR",
-  "DENVER TELEPORT",
-  "STEELE VALLEY",
-  "UPSOUTH TELEPORT"
+  "VYVXSPTS", // what is the db name for all of these??
+  "VYVXLCD"
 ];
 
 const Reservations = () => {
@@ -35,7 +30,7 @@ const Reservations = () => {
     "customer_abbr",
     "reservation_id",
     "reservation_name",
-    "status",
+    "status_code",
     "start_date",
     "end_date",
     "origin", // need to change
